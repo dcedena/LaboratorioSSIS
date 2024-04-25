@@ -1,0 +1,1026 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/11/2024 7:16:44 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-DCDNA"
+  DTS:CreatorName="DESKTOP-DCDNA\Nibbler"
+  DTS:DTSID="{4E88A5A8-DC0F-4142-A3C8-082C1200C373}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="3082"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{66A1BF72-64C4-4A05-BD26-43AF5DE29304}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Administrador de conexiones con Excel]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{3EFC7022-A2FF-499A-B111-1B61F670126D}"
+      DTS:ObjectName="Administrador de conexiones con Excel">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\SQLDATA\SSIS Documentacion\32.-ContenedorBucleFor\Reporte-Producto_0.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[ConexionReporteProducto]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{DA15E51D-C410-438D-9D47-88EBD9785782}"
+      DTS:ObjectName="ConexionReporteProducto">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">"D:\\SQLDATA\\SSIS Documentacion\\32.-ContenedorBucleFor\\" + "ReporteProducto_" +  @[User::NombreCategoria] + ".txt"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="3082"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\SQLDATA\SSIS Documentacion\32.-ContenedorBucleFor\ReporteProducto_.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ProductID"
+              DTS:DTSID="{494EAC55-561A-4FA4-865B-5B3FE27B8EC0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="40"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ProductName"
+              DTS:DTSID="{F50CB94B-D863-4534-8BB9-02317D55DFA5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="3"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CategoryID"
+              DTS:DTSID="{DEB3E425-7FCB-4DC9-9B45-F166BA6D1119}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="15"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CategoryName"
+              DTS:DTSID="{1CDD6DFB-FF61-41CB-B87A-52195C13CD76}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="20"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="QuantityPerUnit"
+              DTS:DTSID="{C74EA457-5410-44E9-A993-EE1A1810C6AA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="UnitPrice"
+              DTS:DTSID="{59B24890-8F89-43DD-A6EB-A6AF864A417D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="2"
+              DTS:TextQualified="True"
+              DTS:ObjectName="UnitsInStock"
+              DTS:DTSID="{FF080080-07DC-4739-A82F-11323AE9BBF4}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-DCDNA\MSSQLSERVER2022.Northwind]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{DA2C9F83-79D5-41CD-8A88-6E9034556ED8}"
+      DTS:ObjectName="DESKTOP-DCDNA\MSSQLSERVER2022.Northwind">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-DCDNA\MSSQLSERVER2022;Initial Catalog=Northwind;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{DA2C9F83-79D5-41CD-8A88-6E9034556ED8}DESKTOP-DCDNA\MSSQLSERVER2022.Northwind;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{56D26F30-B84F-4195-9992-B99A1F7F854E}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Contador">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D23C3D9C-DAF5-4D4D-8CBB-5BF4C0C291BF}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="NombreCategoria">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{641B4F45-6ACA-432B-AB19-25859DAB62ED}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;Reporte-Producto_&quot; +  (DT_WSTR, 1)  @[User::Contador]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="NombreExcel">
+      <DTS:VariableValue
+        DTS:DataType="8">Reporte-Producto_0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1A1F1206-85E8-463A-9DF6-8AE017048F27}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="NombreHoja">
+      <DTS:VariableValue
+        DTS:DataType="8">Producto</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{AC477535-3EDF-481C-9F7D-3C8B0FB78FED}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="RutaCarpeta">
+      <DTS:VariableValue
+        DTS:DataType="8">D:\SQLDATA\SSIS Documentacion\32.-ContenedorBucleFor\</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3058BAEE-C3E6-4A74-AE28-C110366A7400}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TablaCategories">
+      <DTS:VariableValue
+        DTS:DataType="8">Northwind.dbo.Categories</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1ABD0F31-2E1B-4235-A70A-F14D01BF4C13}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TablaProducts">
+      <DTS:VariableValue
+        DTS:DataType="8">Northwind.dbo.Products</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7B28AB2C-3168-406D-871C-7020DE7BF04C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ValorMaximo">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Reporte Producto"
+      DTS:AssignExpression="@Contador = @Contador + 1"
+      DTS:CreationName="STOCK:FORLOOP"
+      DTS:Description="Contenedor de bucles For"
+      DTS:DTSID="{DEA368CD-9E00-444A-BA16-873D3F5FC849}"
+      DTS:EvalExpression="@Contador &lt;= @ValorMaximo"
+      DTS:ExecutableType="STOCK:FORLOOP"
+      DTS:InitExpression="@Contador = 1"
+      DTS:LocaleID="-1"
+      DTS:MaxConcurrent="1"
+      DTS:ObjectName="Reporte Producto">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Reporte Producto\Capturar Nombre Categoria"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Tarea Ejecutar SQL"
+          DTS:DTSID="{14C6310C-6E54-479F-8452-965D91FC2779}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Capturar Nombre Categoria"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{DA2C9F83-79D5-41CD-8A88-6E9034556ED8}"
+              SQLTask:SqlStatementSource="SELECT Replace(CategoryName,'/','_') from Categories&#xA;Where CategoryID=?"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::NombreCategoria" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::Contador"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="3"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Reporte Producto\Reporte Producto"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Tarea Flujo de datos"
+          DTS:DTSID="{CA95E913-1766-40DF-85FC-55BFB7000723}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Reporte Producto"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+                  description="Origen de OLE DB"
+                  name="Conexión SQL Server"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="Comando SQL para ejecutar."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT P.ProductID, P.ProductName, P.CategoryID, C.CategoryName,
+		P.QuantityPerUnit, P.UnitPrice, P.UnitsInStock
+FROM Products AS P inner join Categories AS C
+ON P.CategoryID=C.CategoryID
+WHERE P.CategoryID=?</property>
+                    <property
+                      dataType="System.String"
+                      description="Variable que contiene el comando SQL para ejecutar."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="Asignaciones entre los parámetros del comando SQL y las variables."
+                      name="ParameterMapping">"Parámetro0:Input",{56D26F30-B84F-4195-9992-B99A1F7F854E};</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DESKTOP-DCDNA\MSSQLSERVER2022.Northwind]"
+                      connectionManagerRefId="Package.ConnectionManagers[DESKTOP-DCDNA\MSSQLSERVER2022.Northwind]"
+                      description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB]"
+                      name="Salida de origen de OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].Columns[ProductID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].ExternalColumns[ProductID]"
+                          lineageId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].Columns[ProductID]"
+                          name="ProductID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].Columns[ProductName]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].ExternalColumns[ProductName]"
+                          length="40"
+                          lineageId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].Columns[ProductName]"
+                          name="ProductName"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].Columns[CategoryID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].ExternalColumns[CategoryID]"
+                          lineageId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].Columns[CategoryID]"
+                          name="CategoryID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].Columns[CategoryName]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].ExternalColumns[CategoryName]"
+                          length="15"
+                          lineageId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].Columns[CategoryName]"
+                          name="CategoryName"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].Columns[QuantityPerUnit]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].ExternalColumns[QuantityPerUnit]"
+                          length="20"
+                          lineageId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].Columns[QuantityPerUnit]"
+                          name="QuantityPerUnit"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].Columns[UnitPrice]"
+                          dataType="cy"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].ExternalColumns[UnitPrice]"
+                          lineageId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].Columns[UnitPrice]"
+                          name="UnitPrice"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].Columns[UnitsInStock]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversión"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].ExternalColumns[UnitsInStock]"
+                          lineageId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].Columns[UnitsInStock]"
+                          name="UnitsInStock"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].ExternalColumns[ProductID]"
+                          dataType="i4"
+                          name="ProductID" />
+                        <externalMetadataColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].ExternalColumns[ProductName]"
+                          dataType="wstr"
+                          length="40"
+                          name="ProductName" />
+                        <externalMetadataColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].ExternalColumns[CategoryID]"
+                          dataType="i4"
+                          name="CategoryID" />
+                        <externalMetadataColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].ExternalColumns[CategoryName]"
+                          dataType="wstr"
+                          length="15"
+                          name="CategoryName" />
+                        <externalMetadataColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].ExternalColumns[QuantityPerUnit]"
+                          dataType="wstr"
+                          length="20"
+                          name="QuantityPerUnit" />
+                        <externalMetadataColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].ExternalColumns[UnitPrice]"
+                          dataType="cy"
+                          name="UnitPrice" />
+                        <externalMetadataColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].ExternalColumns[UnitsInStock]"
+                          dataType="i2"
+                          name="UnitsInStock" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de error de origen de OLE DB]"
+                      isErrorOut="true"
+                      name="Salida de error de origen de OLE DB">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de error de origen de OLE DB].Columns[ProductID]"
+                          dataType="i4"
+                          lineageId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de error de origen de OLE DB].Columns[ProductID]"
+                          name="ProductID" />
+                        <outputColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de error de origen de OLE DB].Columns[ProductName]"
+                          dataType="wstr"
+                          length="40"
+                          lineageId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de error de origen de OLE DB].Columns[ProductName]"
+                          name="ProductName" />
+                        <outputColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de error de origen de OLE DB].Columns[CategoryID]"
+                          dataType="i4"
+                          lineageId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de error de origen de OLE DB].Columns[CategoryID]"
+                          name="CategoryID" />
+                        <outputColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de error de origen de OLE DB].Columns[CategoryName]"
+                          dataType="wstr"
+                          length="15"
+                          lineageId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de error de origen de OLE DB].Columns[CategoryName]"
+                          name="CategoryName" />
+                        <outputColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de error de origen de OLE DB].Columns[QuantityPerUnit]"
+                          dataType="wstr"
+                          length="20"
+                          lineageId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de error de origen de OLE DB].Columns[QuantityPerUnit]"
+                          name="QuantityPerUnit" />
+                        <outputColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de error de origen de OLE DB].Columns[UnitPrice]"
+                          dataType="cy"
+                          lineageId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de error de origen de OLE DB].Columns[UnitPrice]"
+                          name="UnitPrice" />
+                        <outputColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de error de origen de OLE DB].Columns[UnitsInStock]"
+                          dataType="i2"
+                          lineageId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de error de origen de OLE DB].Columns[UnitsInStock]"
+                          name="UnitsInStock" />
+                        <outputColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Reporte Producto\Reporte Producto\Destino de Excel"
+                  componentClassID="Microsoft.ExcelDestination"
+                  contactInfo="Destino de Excel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+                  description="Destino de Excel"
+                  name="Destino de Excel"
+                  usesDispositions="true">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="Comando SQL para ejecutar."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                      name="FastLoadOptions"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Reporte Producto\Reporte Producto\Destino de Excel.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Administrador de conexiones con Excel]"
+                      connectionManagerRefId="Package.ConnectionManagers[Administrador de conexiones con Excel]"
+                      description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Reporte Producto\Reporte Producto\Destino de Excel.Inputs[Entrada de destino de Excel]"
+                      errorOrTruncationOperation="Insertar"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="Entrada de destino de Excel">
+                      <externalMetadataColumns
+                        isUsed="True" />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Reporte Producto\Reporte Producto\Destino de Excel.Outputs[Salida de error de destino de Excel]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Salida de error de destino de Excel"
+                      synchronousInputId="Package\Reporte Producto\Reporte Producto\Destino de Excel.Inputs[Entrada de destino de Excel]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Destino de Excel.Outputs[Salida de error de destino de Excel].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Reporte Producto\Reporte Producto\Destino de Excel.Outputs[Salida de error de destino de Excel].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Destino de Excel.Outputs[Salida de error de destino de Excel].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Reporte Producto\Reporte Producto\Destino de Excel.Outputs[Salida de error de destino de Excel].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Reporte Producto\Reporte Producto\Multidifusión"
+                  componentClassID="Microsoft.Multicast"
+                  contactInfo="Multidifusión;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+                  description="Distribuye cada fila de entrada a cada una de las filas de una o varias salidas. Por ejemplo, se crea una bifurcación de un flujo de datos para realizar una copia de los datos de modo que se puedan enmascarar algunos valores antes de compartirlos con los asociados externos."
+                  name="Multidifusión">
+                  <inputs>
+                    <input
+                      refId="Package\Reporte Producto\Reporte Producto\Multidifusión.Inputs[Entrada de Multidifusión 1]"
+                      name="Entrada de Multidifusión 1">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Reporte Producto\Reporte Producto\Multidifusión.Outputs[Salida de Multidifusión 1]"
+                      deleteOutputOnPathDetached="true"
+                      name="Salida de Multidifusión 1"
+                      synchronousInputId="Package\Reporte Producto\Reporte Producto\Multidifusión.Inputs[Entrada de Multidifusión 1]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Reporte Producto\Reporte Producto\Multidifusión.Outputs[Salida de multidifusión 1]"
+                      deleteOutputOnPathDetached="true"
+                      name="Salida de multidifusión 1"
+                      synchronousInputId="Package\Reporte Producto\Reporte Producto\Multidifusión.Inputs[Entrada de Multidifusión 1]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Reporte Producto\Reporte Producto\Multidifusión.Outputs[Salida de multidifusión 2]"
+                      dangling="true"
+                      deleteOutputOnPathDetached="true"
+                      name="Salida de multidifusión 2"
+                      synchronousInputId="Package\Reporte Producto\Reporte Producto\Multidifusión.Inputs[Entrada de Multidifusión 1]">
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Reporte Producto\Reporte Producto\Reporte Productos"
+                  componentClassID="Microsoft.FlatFileDestination"
+                  contactInfo="Destino de archivo plano;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;1"
+                  description="Destino de archivo plano"
+                  localeId="3082"
+                  name="Reporte Productos"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Especifica si los datos sobrescriben el archivo de destino o se anexan al mismo."
+                      name="Overwrite">true</property>
+                    <property
+                      dataType="System.Null"
+                      description="Especifica el texto para escribir en el archivo de destino antes de escribir ningún dato."
+                      expressionType="Notify"
+                      name="Header" />
+                    <property
+                      dataType="System.Boolean"
+                      description="Cuando el calificador de texto está habilitado, especifica si este contendrá secuencias de escape o no en los datos escritos en el archivo de destino."
+                      name="EscapeQualifier">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Reporte Producto\Reporte Producto\Reporte Productos.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[ConexionReporteProducto]"
+                      connectionManagerRefId="Package.ConnectionManagers[ConexionReporteProducto]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Reporte Producto\Reporte Producto\Reporte Productos.Inputs[Entrada de destino de archivo plano]"
+                      hasSideEffects="true"
+                      name="Entrada de destino de archivo plano">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Reporte Productos.Inputs[Entrada de destino de archivo plano].Columns[ProductID]"
+                          cachedDataType="i4"
+                          cachedName="ProductID"
+                          externalMetadataColumnId="Package\Reporte Producto\Reporte Producto\Reporte Productos.Inputs[Entrada de destino de archivo plano].ExternalColumns[ProductID]"
+                          lineageId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].Columns[ProductID]" />
+                        <inputColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Reporte Productos.Inputs[Entrada de destino de archivo plano].Columns[ProductName]"
+                          cachedDataType="wstr"
+                          cachedLength="40"
+                          cachedName="ProductName"
+                          externalMetadataColumnId="Package\Reporte Producto\Reporte Producto\Reporte Productos.Inputs[Entrada de destino de archivo plano].ExternalColumns[ProductName]"
+                          lineageId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].Columns[ProductName]" />
+                        <inputColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Reporte Productos.Inputs[Entrada de destino de archivo plano].Columns[CategoryID]"
+                          cachedDataType="i4"
+                          cachedName="CategoryID"
+                          externalMetadataColumnId="Package\Reporte Producto\Reporte Producto\Reporte Productos.Inputs[Entrada de destino de archivo plano].ExternalColumns[CategoryID]"
+                          lineageId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].Columns[CategoryID]" />
+                        <inputColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Reporte Productos.Inputs[Entrada de destino de archivo plano].Columns[CategoryName]"
+                          cachedDataType="wstr"
+                          cachedLength="15"
+                          cachedName="CategoryName"
+                          externalMetadataColumnId="Package\Reporte Producto\Reporte Producto\Reporte Productos.Inputs[Entrada de destino de archivo plano].ExternalColumns[CategoryName]"
+                          lineageId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].Columns[CategoryName]" />
+                        <inputColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Reporte Productos.Inputs[Entrada de destino de archivo plano].Columns[QuantityPerUnit]"
+                          cachedDataType="wstr"
+                          cachedLength="20"
+                          cachedName="QuantityPerUnit"
+                          externalMetadataColumnId="Package\Reporte Producto\Reporte Producto\Reporte Productos.Inputs[Entrada de destino de archivo plano].ExternalColumns[QuantityPerUnit]"
+                          lineageId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].Columns[QuantityPerUnit]" />
+                        <inputColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Reporte Productos.Inputs[Entrada de destino de archivo plano].Columns[UnitPrice]"
+                          cachedDataType="cy"
+                          cachedName="UnitPrice"
+                          externalMetadataColumnId="Package\Reporte Producto\Reporte Producto\Reporte Productos.Inputs[Entrada de destino de archivo plano].ExternalColumns[UnitPrice]"
+                          lineageId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].Columns[UnitPrice]" />
+                        <inputColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Reporte Productos.Inputs[Entrada de destino de archivo plano].Columns[UnitsInStock]"
+                          cachedDataType="i2"
+                          cachedName="UnitsInStock"
+                          externalMetadataColumnId="Package\Reporte Producto\Reporte Producto\Reporte Productos.Inputs[Entrada de destino de archivo plano].ExternalColumns[UnitsInStock]"
+                          lineageId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB].Columns[UnitsInStock]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Reporte Productos.Inputs[Entrada de destino de archivo plano].ExternalColumns[ProductID]"
+                          dataType="i4"
+                          name="ProductID" />
+                        <externalMetadataColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Reporte Productos.Inputs[Entrada de destino de archivo plano].ExternalColumns[ProductName]"
+                          dataType="wstr"
+                          length="40"
+                          name="ProductName" />
+                        <externalMetadataColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Reporte Productos.Inputs[Entrada de destino de archivo plano].ExternalColumns[CategoryID]"
+                          dataType="i4"
+                          name="CategoryID" />
+                        <externalMetadataColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Reporte Productos.Inputs[Entrada de destino de archivo plano].ExternalColumns[CategoryName]"
+                          dataType="wstr"
+                          length="15"
+                          name="CategoryName" />
+                        <externalMetadataColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Reporte Productos.Inputs[Entrada de destino de archivo plano].ExternalColumns[QuantityPerUnit]"
+                          dataType="wstr"
+                          length="20"
+                          name="QuantityPerUnit" />
+                        <externalMetadataColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Reporte Productos.Inputs[Entrada de destino de archivo plano].ExternalColumns[UnitPrice]"
+                          dataType="cy"
+                          name="UnitPrice" />
+                        <externalMetadataColumn
+                          refId="Package\Reporte Producto\Reporte Producto\Reporte Productos.Inputs[Entrada de destino de archivo plano].ExternalColumns[UnitsInStock]"
+                          dataType="i2"
+                          name="UnitsInStock" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Reporte Producto\Reporte Producto.Paths[Salida de Multidifusión 1]"
+                  endId="Package\Reporte Producto\Reporte Producto\Reporte Productos.Inputs[Entrada de destino de archivo plano]"
+                  name="Salida de Multidifusión 1"
+                  startId="Package\Reporte Producto\Reporte Producto\Multidifusión.Outputs[Salida de Multidifusión 1]" />
+                <path
+                  refId="Package\Reporte Producto\Reporte Producto.Paths[Salida de multidifusión 1]"
+                  endId="Package\Reporte Producto\Reporte Producto\Destino de Excel.Inputs[Entrada de destino de Excel]"
+                  name="Salida de multidifusión 1"
+                  startId="Package\Reporte Producto\Reporte Producto\Multidifusión.Outputs[Salida de multidifusión 1]" />
+                <path
+                  refId="Package\Reporte Producto\Reporte Producto.Paths[Salida de origen de OLE DB]"
+                  endId="Package\Reporte Producto\Reporte Producto\Multidifusión.Inputs[Entrada de Multidifusión 1]"
+                  name="Salida de origen de OLE DB"
+                  startId="Package\Reporte Producto\Reporte Producto\Conexión SQL Server.Outputs[Salida de origen de OLE DB]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Reporte Producto.PrecedenceConstraints[Restricción]"
+          DTS:CreationName=""
+          DTS:DTSID="{3A5FB57C-4631-46BD-8B32-4C3BFC627237}"
+          DTS:From="Package\Reporte Producto\Capturar Nombre Categoria"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Restricción"
+          DTS:To="Package\Reporte Producto\Reporte Producto" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Traer Valor Maximo"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{37EE7686-4C12-40F5-8413-D2B6FACC5CDD}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Traer Valor Maximo"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{DA2C9F83-79D5-41CD-8A88-6E9034556ED8}"
+          SQLTask:SqlStatementSource="SELECT MAX(CategoryID) FROM Products"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::ValorMaximo" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{AAFD2542-F630-4B89-9508-50E198443CB2}"
+      DTS:From="Package\Traer Valor Maximo"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\Reporte Producto" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Reporte Producto\Reporte Producto"
+          TopLeft="71,134" />
+        <NodeLayout
+          Size="215,42"
+          Id="Package\Reporte Producto\Capturar Nombre Categoria"
+          TopLeft="53,17.5" />
+        <EdgeLayout
+          Id="Package\Reporte Producto.PrecedenceConstraints[Restricción]"
+          TopLeft="157,59.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,74.5"
+              Start="0,0"
+              End="0,67">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="327,231"
+          Size="327,274"
+          Id="Package\Reporte Producto"
+          TopLeft="192,215" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Traer Valor Maximo"
+          TopLeft="271,55" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="357,97">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,118"
+              Start="0,0"
+              End="0,110.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,110.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Reporte Producto\Reporte Producto">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Reporte Producto\Reporte Producto\Conexión SQL Server"
+          TopLeft="283,112" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Reporte Producto\Reporte Producto\Reporte Productos"
+          TopLeft="199,363" />
+        <NodeLayout
+          Size="140,42"
+          Id="Package\Reporte Producto\Reporte Producto\Multidifusión"
+          TopLeft="316,228" />
+        <EdgeLayout
+          Id="Package\Reporte Producto\Reporte Producto.Paths[Salida de origen de OLE DB]"
+          TopLeft="376,154">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="10,74"
+              Start="0,0"
+              End="10,66.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33"
+                    Point2="0,37"
+                    Point3="4,37" />
+                  <mssgle:LineSegment
+                    End="6,37" />
+                  <mssgle:CubicBezierSegment
+                    Point1="6,37"
+                    Point2="10,37"
+                    Point3="10,41" />
+                  <mssgle:LineSegment
+                    End="10,66.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Reporte Producto\Reporte Producto.Paths[Salida de Multidifusión 1]"
+          TopLeft="386,270">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-101.5,93"
+              Start="0,0"
+              End="-101.5,85.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,42.5"
+                    Point2="0,46.5"
+                    Point3="-4,46.5" />
+                  <mssgle:LineSegment
+                    End="-97.5,46.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-97.5,46.5"
+                    Point2="-101.5,46.5"
+                    Point3="-101.5,50.5" />
+                  <mssgle:LineSegment
+                    End="-101.5,85.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Reporte Producto\Reporte Producto\Destino de Excel"
+          TopLeft="455,364" />
+        <EdgeLayout
+          Id="Package\Reporte Producto\Reporte Producto.Paths[Salida de multidifusión 1]"
+          TopLeft="408,270">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="127.5,94"
+              Start="0,0"
+              End="127.5,86.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.2372881355932" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.2372881355932"
+                    Point2="0,38.2372881355932"
+                    Point3="4,38.2372881355932" />
+                  <mssgle:LineSegment
+                    End="123.5,38.2372881355932" />
+                  <mssgle:CubicBezierSegment
+                    Point1="123.5,38.2372881355932"
+                    Point2="127.5,38.2372881355932"
+                    Point3="127.5,42.2372881355932" />
+                  <mssgle:LineSegment
+                    End="127.5,86.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Reporte Producto\Reporte Producto\Conexión SQL Server">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Reporte Producto\Reporte Producto\Destino de Excel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
